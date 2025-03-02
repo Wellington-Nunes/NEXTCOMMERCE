@@ -1,9 +1,14 @@
-import styles from "./page.module.css";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <p>NEXTCOMMERCE</p>
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/products");
+  }, [router]);
+
+  return null;
 }
