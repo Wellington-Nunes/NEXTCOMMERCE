@@ -1,13 +1,16 @@
-import { ProductPageProps } from "@/types/product";
 import { fetchProduct } from "@/services/productService";
 import * as S from "./styles";
+import { ProductPageProps } from "@/types/product";
 
-const ProductPage = async ({ params }: ProductPageProps) => {
-    if (!params?.id) {
+
+const ProductPage = async ({ params }: { params: ProductPageProps }) => {
+    const { id } = await params
+
+    if (!id) {
         throw new Error("ID do produto não encontrado");
     }
 
-    const product = await fetchProduct(params.id);
+    const product = await fetchProduct(id);
 
     return (
         <S.ProductDetailContainer>
