@@ -19,8 +19,9 @@ declare module "styled-components" {
     breakpoints: {
       mobile: string;
       tablet: string;
+      laptop: string;
       desktop: string;
-      ultraWide;
+      ultraWide: string;
     };
   }
 }

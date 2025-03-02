@@ -23,3 +23,17 @@ export const fetchProduct = async (id: string): Promise<Product> => {
   const data = await response.json();
   return data.product;
 };
+
+export const fetchCategories = async (): Promise<string[]> => {
+  try {
+    const response = await fetch(`${API_URL}/products/category`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch categories");
+    }
+    const data = await response.json();
+    return data.categories;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return [];
+  }
+};

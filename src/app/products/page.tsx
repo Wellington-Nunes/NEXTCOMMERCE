@@ -1,23 +1,17 @@
-import { fetchProducts } from "@/services/productService";
-import Link from "next/link";
+import ProductList from "@/components/ProductList";
+import { fetchCategories, fetchProducts } from "@/services/productService";
 
 const ProductsPage = async () => {
-    const products = await fetchProducts();
+    const [products, categories] = await Promise.all([
+        fetchProducts(),
+        fetchCategories(),
+    ]);
 
     return (
-        <div>
-            <h1>Produtos</h1>
-            <ul>
-                {products.map((product) => (
-                    <li key={product.id}>
-                        <h3>{product.title}</h3>
-                        <p>{product.price}</p>
-                        <Link href={`/products/${product.id}`}>Ver produto</Link>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+        <ProductList
+            products={products}
+            categories={categories}
+        />);
 };
 
 export default ProductsPage;
