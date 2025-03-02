@@ -10,9 +10,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
 
-    <Header />
-    <S.MainContent>{children}</S.MainContent>
-    <Footer />
+    <S.LayoutContainer>
+      <Header />
+      <S.MainContent>{children}</S.MainContent>
+      <Footer />
+    </S.LayoutContainer>
   </ThemeProvider>
 );
 
