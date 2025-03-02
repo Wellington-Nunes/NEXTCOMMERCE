@@ -108,25 +108,42 @@ export const ProductDescription = styled.p`
 `;
 
 export const ProductPriceContainer = styled.div`
+  width: 100%;
+  height: 3rem;
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-bottom: 10px;
+  justify-content: flex-start;
+
+  position: relative;
 `;
 
 export const ProductPrice = styled.p`
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primary_default};
 `;
 
+export const OriginalPrice = styled.p`
+  font-size: 1.6rem;
+  color: ${({ theme }) => theme.colors.secondary_text};
+  text-decoration: line-through;
+  font-weight: normal;
+  margin-right: 1rem;
+`;
+
+export const DiscountedPrice = styled.p`
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.success};
+  font-weight: bold;
+`;
+
 export const ProductDiscount = styled.span`
-  display: inline-block;
   background-color: ${({ theme }) => theme.colors.danger};
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
   padding: 2.5px 5px;
   border-radius: 4px;
-  margin-left: 5px;
+  position: absolute;
+  right: 0;
 `;

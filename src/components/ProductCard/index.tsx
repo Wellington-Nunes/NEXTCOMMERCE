@@ -35,9 +35,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <S.ProductTitle>{product.title}</S.ProductTitle>
 
                 <S.ProductPriceContainer>
-                    <S.ProductPrice>${product.price.toFixed(2)}</S.ProductPrice>
+                    {product.discount && (
+                        <>
+                            <S.OriginalPrice>${product.price.toFixed(2)}</S.OriginalPrice>
+                            <S.DiscountedPrice>${(product.price * (1 - product.discount / 100)).toFixed(2)}</S.DiscountedPrice>
+                        </>
+                    )}
+
+                    {!product.discount && <S.ProductPrice>${product.price.toFixed(2)}</S.ProductPrice>}
+
                     {product.discount && <S.ProductDiscount>{product.discount}% OFF</S.ProductDiscount>}
                 </S.ProductPriceContainer>
+
 
                 <S.ProductDescription>{product.description}</S.ProductDescription>
             </S.ProductInfo>
