@@ -1,11 +1,11 @@
-import { ProductPageProps } from "@/types/props";
+import { ProductPageProps } from "@/types/product";
 import { fetchProduct } from "@/services/productService";
 import Link from "next/link";
 
 const ProductPage = async ({ params }: ProductPageProps) => {
     if (!params?.id) {
         throw new Error("ID do produto não encontrado");
-      }
+    }
 
     const product = await fetchProduct(params.id);
 

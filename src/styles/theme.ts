@@ -14,9 +14,10 @@ export const theme = {
     background_deep_04: "#FFFFFF"
   },
   breakpoints: {
-    mobile: "320px",
-    tablet: "768px",
-    desktop: "1024px",
-    ultraWide: "1440px", 
+    mobile: "480px",        
+    tablet: "768px",        
+    laptop: "1024px",       
+    desktop: "1280px",      
+    ultraWide: "1440px",    
   },
 };
