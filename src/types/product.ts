@@ -24,6 +24,7 @@ export interface ProductPageProps {
 // Interface para as props do componente ProductList
 export interface ProductListProps {
   products: Product[];
+  categories: string[];
 }
 
 // Interface para as props do componente ProductCard

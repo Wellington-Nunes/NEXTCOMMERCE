@@ -1,27 +1,37 @@
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './styles';
 import { ProductListProps } from '@/types/product';
+
+import useProductFilter from '@/hooks/useProductFilter';
 import ProductCard from '../ProductCard';
 import SearchBar from '../SearchBar';
+import CategoryFilter from '../CategoryFilter';
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredProducts = products?.filter(product =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  ) || [];
+const ProductList: React.FC<ProductListProps> = ({ products, categories }) => {
+  const {
+    searchTerm,
+    setSearchTerm,
+    selectedCategory,
+    setSelectedCategory,
+    filteredProducts,
+  } = useProductFilter(products);
 
   return (
     <>
-      <S.SearchWrapper>
+      <S.FiltersContainer>
         <SearchBar
           value={searchTerm}
           onChange={setSearchTerm}
           placeholder="Search products..."
         />
-      </S.SearchWrapper>
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onChange={setSelectedCategory}
+        />
+      </S.FiltersContainer>
 
       <S.ProductListContainer>
         {filteredProducts.map((product) => (
@@ -30,7 +40,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
 
         {filteredProducts.length === 0 && (
           <S.NoResultsMessage>
-            No products found <strong> {searchTerm}</strong>
+            No products found {searchTerm && <>for:  <strong> {searchTerm}</strong></>}
+            {selectedCategory !== 'all' && <> in:  <strong> {selectedCategory}</strong></>}
           </S.NoResultsMessage>
         )}
       </S.ProductListContainer>

@@ -12,6 +12,7 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ value, onChange, placeholder = 'Search...' }) => {
     return (
         <S.SearchContainer>
+            <S.Label>Search products:</S.Label>
             <S.SearchInput
                 type="text"
                 value={value}

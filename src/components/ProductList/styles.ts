@@ -36,5 +36,29 @@ export const NoResultsMessage = styled.div`
   width: 100%;
   text-align: start;
   color: ${({ theme }) => theme.colors.primary_text};
-  font-size: 2rem;
+  font-size: 1.6rem;
+`;
+
+export const FiltersContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.laptop}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
