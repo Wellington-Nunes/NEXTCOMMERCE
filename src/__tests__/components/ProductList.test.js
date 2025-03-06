@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
 import ProductList from "../../components/ProductList";
+import { ThemeProvider } from "styled-components";
 import { mockTheme } from "../../utils/mockTheme";
 
 describe("ProductList Component", () => {
