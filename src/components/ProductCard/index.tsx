@@ -7,7 +7,9 @@ import Link from 'next/link';
 import formatImageUrl from '@/utils/formatImageUrl';
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    const [imageUrl, setImageUrl] = useState(formatImageUrl(product.image));
+    const [imageUrl, setImageUrl] = useState(() => {
+        return product.image ? formatImageUrl(product.image) : "/default-product-image.png";
+    });
 
     const handleImageError = () => {
         setImageUrl("/default-product-image.png");
